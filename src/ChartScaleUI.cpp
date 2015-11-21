@@ -13,16 +13,6 @@ ChartScaleDialogBase::ChartScaleDialogBase( wxWindow* parent, wxWindowID id, con
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 	
-	m_fgSizer = new wxFlexGridSizer( 0, 2, 0, 0 );
-	m_fgSizer->AddGrowableCol( 0 );
-	m_fgSizer->AddGrowableRow( 0 );
-	m_fgSizer->SetFlexibleDirection( wxBOTH );
-	m_fgSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-	
-	
-	this->SetSizer( m_fgSizer );
-	this->Layout();
-	m_fgSizer->Fit( this );
 	
 	this->Centre( wxBOTH );
 }
@@ -82,6 +72,9 @@ PreferencesDialogBase::PreferencesDialogBase( wxWindow* parent, wxWindowID id, c
 	
 	m_cbShowTitleBar = new wxCheckBox( this, wxID_ANY, _("Show Title Bar"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer3->Add( m_cbShowTitleBar, 0, wxALL, 5 );
+	
+	m_cbLastButton = new wxCheckBox( this, wxID_ANY, _("Last Button"), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer3->Add( m_cbLastButton, 0, wxALL, 5 );
 	
 	
 	fgSizer7->Add( fgSizer3, 1, wxEXPAND, 5 );

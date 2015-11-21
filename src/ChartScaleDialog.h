@@ -28,13 +28,16 @@ class ChartScaleDialog : public ChartScaleDialogBase
 {
 public:
     ChartScaleDialog( wxWindow *parent, chartscale_pi &_chartscale_pi, wxPoint position, int size,
-                      int transparency, long style, long orientation );
+                      int transparency, long style, long orientation, bool lastbutton );
 
     void SetVP( PlugIn_ViewPort &vp );
     void OnScale( wxScrollEvent& event );
+    void OnScaleClicked( wxMouseEvent& event );
+    void OnLast( wxCommandEvent& event );
         
 private:
     wxSlider *m_sScale;
     chartscale_pi &m_chartscale_pi;
     PlugIn_ViewPort m_vp;
+    double m_lastppm;
 };

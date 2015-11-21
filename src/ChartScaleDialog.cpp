@@ -28,21 +28,35 @@
 #include "chartscale_pi.h"
 #include "ChartScaleDialog.h"
 
-static double scales[] = {1, 2, 5, 10, 20, 50, 100, 200, 500,
-                          1e3, 2e3, 5e3, 1e4, 2e4};
+static double scales[] = {.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
                           
 
 ChartScaleDialog::ChartScaleDialog( wxWindow *parent, chartscale_pi &_chartscale_pi, wxPoint position,
-                                    int size, int transparency, long style, long orientation )
+                                    int size, int transparency, long style, long orientation, bool lastbutton )
 : ChartScaleDialogBase( parent, wxID_ANY, _("Chart Scale"), position, wxDefaultSize, style ),
   m_chartscale_pi(_chartscale_pi)
 {
-    m_sScale = new wxSlider(this, wxID_ANY, 5, 0, sizeof scales / sizeof *scales-1, wxDefaultPosition,
-                                    orientation == wxSL_VERTICAL ? wxSize(20, size) : wxSize(size, 20),
-                                    orientation );
-    m_fgSizer->Add( m_sScale, 0, wxALL|wxEXPAND, 5);
-    m_fgSizer->Fit( this );
+    wxFlexGridSizer *fgSizer = new wxFlexGridSizer( orientation != wxSL_VERTICAL,
+                                                    orientation == wxSL_VERTICAL, 0, 0 );
+    fgSizer->AddGrowableCol( 0 );
+    fgSizer->AddGrowableRow( 0 );
+    fgSizer->SetFlexibleDirection( wxBOTH );
+    fgSizer->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+    this->SetSizer( fgSizer );
+    this->Layout();
+    fgSizer->Fit( this );
 
+    m_sScale = new wxSlider(this, wxID_ANY, 5, 0, sizeof scales / sizeof *scales-1, wxDefaultPosition,
+                            orientation == wxSL_VERTICAL ? wxSize(20, size) : wxSize(size, 20), orientation );
+    fgSizer->Add( m_sScale, 0, wxALL|wxEXPAND, 5);
+    if(lastbutton) {
+        wxButton *bLast = new wxButton( this, wxID_ANY, orientation == wxSL_VERTICAL ? _("L\na\ns\nt") : _("Last"),
+                                        wxDefaultPosition, orientation == wxSL_VERTICAL ? wxSize(28, 80) : wxSize(50, 32));
+        fgSizer->Add( bLast, 0, 0, 0);
+        bLast->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ChartScaleDialog::OnLast ), NULL, this );
+    }
+    fgSizer->Fit( this );
     m_sScale->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
     m_sScale->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
     m_sScale->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
@@ -52,7 +66,9 @@ ChartScaleDialog::ChartScaleDialog( wxWindow *parent, chartscale_pi &_chartscale
     m_sScale->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
     m_sScale->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
     m_sScale->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( ChartScaleDialog::OnScale ), NULL, this );
-    
+
+    m_sScale->Connect( wxEVT_LEFT_DOWN, wxMouseEventHandler( ChartScaleDialog::OnScaleClicked ), NULL, this );
+
     SetTransparent(255 - transparency*255/100);
     Move(0,0);        // workaround for gtk autocentre dialog behavior
     Move(position);
@@ -61,6 +77,8 @@ ChartScaleDialog::ChartScaleDialog( wxWindow *parent, chartscale_pi &_chartscale
 
 void ChartScaleDialog::SetVP( PlugIn_ViewPort &vp )
 {
+    if(m_vp.view_scale_ppm != vp.view_scale_ppm)
+        m_lastppm = m_vp.view_scale_ppm;
     m_vp = vp;
 
     double scale = 1/vp.view_scale_ppm;
@@ -77,8 +95,29 @@ void ChartScaleDialog::SetVP( PlugIn_ViewPort &vp )
 }
 
 void ChartScaleDialog::OnScale( wxScrollEvent& event )
-{    
-    double scale = scales[event.GetPosition()];
+{
+    double scale = scales[m_sScale->GetValue()];
     JumpToPosition(m_vp.clat, m_vp.clon, 1/scale);
     GetOCPNCanvasWindow()->Refresh(true);
+}
+
+void ChartScaleDialog::OnScaleClicked( wxMouseEvent& event )
+{
+    wxPoint p = event.GetPosition();
+    wxSize s = m_sScale->GetSize();
+
+    int a, b;
+    if(m_sScale->HasFlag(wxSL_VERTICAL))
+        a = p.y, b = s.y;
+    else
+        a = p.x, b = s.x;
+
+    m_sScale->SetValue((m_sScale->GetMax() * a + b/2) / b);
+
+    wxScrollEvent sevent;
+    OnScale( sevent );
+}
+void ChartScaleDialog::OnLast( wxCommandEvent& event )
+{
+    JumpToPosition(m_vp.clat, m_vp.clon, m_lastppm);
 }

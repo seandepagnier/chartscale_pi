@@ -79,6 +79,7 @@ private:
     int m_transparency, m_size;
     long m_style, m_orientation;
     wxPoint m_position;
+    bool m_lastbutton;
 };
 
 #endif

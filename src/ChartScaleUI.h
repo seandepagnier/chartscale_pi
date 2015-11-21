@@ -11,10 +11,9 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
-#include <wx/sizer.h>
-#include <wx/gdicmn.h>
 #include <wx/string.h>
 #include <wx/dialog.h>
+#include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
@@ -22,6 +21,7 @@
 #include <wx/slider.h>
 #include <wx/choice.h>
 #include <wx/spinctrl.h>
+#include <wx/sizer.h>
 #include <wx/checkbox.h>
 #include <wx/button.h>
 
@@ -36,7 +36,6 @@ class ChartScaleDialogBase : public wxDialog
 	private:
 	
 	protected:
-		wxFlexGridSizer* m_fgSizer;
 	
 	public:
 		
@@ -68,6 +67,7 @@ class PreferencesDialogBase : public wxDialog
 		wxChoice* m_cOrientation;
 		wxSpinCtrl* m_sSize;
 		wxCheckBox* m_cbShowTitleBar;
+		wxCheckBox* m_cbLastButton;
 		wxStdDialogButtonSizer* m_sdbSizer2;
 		wxButton* m_sdbSizer2OK;
 		

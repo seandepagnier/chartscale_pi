@@ -70,7 +70,7 @@ int chartscale_pi::Init(void)
     LoadConfig();
 
     m_pChartScaleDialog = new ChartScaleDialog(GetOCPNCanvasWindow(), *this, m_position, m_size,
-                                               m_transparency, m_style, m_orientation);
+                                               m_transparency, m_style, m_orientation, m_lastbutton);
 
     return (WANTS_CONFIG              |
             WANTS_ONPAINT_VIEWPORT    |
@@ -140,18 +140,20 @@ void chartscale_pi::ShowPreferencesDialog( wxWindow* parent )
     dlg.m_sSize->SetValue(m_size);
     dlg.m_cbShowTitleBar->SetValue(m_style);
     dlg.m_cOrientation->SetSelection(m_orientation == wxSL_HORIZONTAL);
-    
+    dlg.m_cbLastButton->SetValue(m_lastbutton);
+
     dlg.ShowModal();
 
     m_transparency = dlg.m_sTransparency->GetValue();
     m_size = dlg.m_sSize->GetValue();
     m_style = dlg.m_cbShowTitleBar->GetValue() ? wxCAPTION : 0;
     m_orientation = dlg.m_cOrientation->GetSelection() ? wxSL_HORIZONTAL : wxSL_VERTICAL;
+    m_lastbutton = dlg.m_cbLastButton->GetValue();
     wxPoint p = m_pChartScaleDialog->GetPosition();
     
     delete m_pChartScaleDialog;
     m_pChartScaleDialog = new ChartScaleDialog(GetOCPNCanvasWindow(), *this, p, m_size,
-                                               m_transparency, m_style, m_orientation);
+                                               m_transparency, m_style, m_orientation, m_lastbutton);
 }
 
 void chartscale_pi::SetColorScheme(PI_ColorScheme cs)
@@ -177,6 +179,8 @@ bool chartscale_pi::LoadConfig(void)
     if(m_orientation != wxSL_VERTICAL && m_orientation != wxSL_HORIZONTAL)
         m_orientation = wxSL_VERTICAL;
 
+    pConf->Read( _T("LastButton"), &m_lastbutton, 0);
+
     int XPosition, YPosition;
     pConf->Read( _T("XPosition"), &XPosition, 0 );
     pConf->Read( _T("YPosition"), &YPosition, 100 );
@@ -198,6 +202,7 @@ bool chartscale_pi::SaveConfig(void)
     pConf->Write( _T("Size"), m_size);
     pConf->Write( _T("Style"), m_style);
     pConf->Write( _T("Orientation"), m_orientation);
+    pConf->Write( _T("LastButton"), m_lastbutton);
     
     pConf->Write( _T("XPosition"), m_pChartScaleDialog->GetPosition().x );
     pConf->Write( _T("YPosition"), m_pChartScaleDialog->GetPosition().y );
