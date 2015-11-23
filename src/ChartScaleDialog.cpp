@@ -34,7 +34,7 @@ static double scales[] = {.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048,
 ChartScaleDialog::ChartScaleDialog( wxWindow *parent, chartscale_pi &_chartscale_pi, wxPoint position,
                                     int size, int transparency, long style, long orientation, bool lastbutton )
 : ChartScaleDialogBase( parent, wxID_ANY, _("Chart Scale"), position, wxDefaultSize, style ),
-  m_chartscale_pi(_chartscale_pi)
+  m_chartscale_pi(_chartscale_pi), m_lastppm(1)
 {
     wxFlexGridSizer *fgSizer = new wxFlexGridSizer( orientation != wxSL_VERTICAL,
                                                     orientation == wxSL_VERTICAL, 0, 0 );
