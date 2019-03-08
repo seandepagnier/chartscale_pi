@@ -182,7 +182,7 @@ bool chartscale_pi::LoadConfig(void)
     pConf->Read( _T("LastButton"), &m_lastbutton, 0);
 
     int XPosition, YPosition;
-    pConf->Read( _T("XPosition"), &XPosition, 0 );
+    pConf->Read( _T("XPosition"), &XPosition, 100 );
     pConf->Read( _T("YPosition"), &YPosition, 100 );
     m_position = wxPoint(XPosition, YPosition);
 
