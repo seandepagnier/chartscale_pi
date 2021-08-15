@@ -90,7 +90,7 @@ And in this example the slider-button is to the far right. That means
 
 image::chartscale_all_out.png[]
 
-link:chartscale.html[Back to top of page ↑]
+xref:chartscale.adoc[Back to top of page ↑]
 
 [#standard_actions]
 === 3. Standard Actions
@@ -111,4 +111,4 @@ Click “Last” to zoom back to the zoom-factor that was last used.
 
 image::chartscal_last.png[]
 
-link:chartscale.html[Back to top of page ↑]
+xref:chartscale.adoc[Back to top of page ↑]
