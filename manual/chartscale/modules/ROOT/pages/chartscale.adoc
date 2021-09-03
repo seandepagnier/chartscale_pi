@@ -1,8 +1,8 @@
-== ChartScale
+= ChartScale
 
 image::chartscale_.png[]
 
-=== Links
+== Links
 
 * Source: https://github.com/seandepagnier/chartscale_pi
 * Downloads: https://opencpn.org/OpenCPN/plugins/chartscale.html
@@ -24,9 +24,9 @@ this plugin]
 * xref:chartscale.adoc#standard_actions[Standard Actions]
 
 [#what_and_why]
-=== 1. What and Why
+== 1. What and Why
 [#a_what_can_chartscale-pi_do]
-==== A. What can Chartscale-pi do
+=== A. What can Chartscale-pi do
 
  
 The plugin allows the user to zoom in and out by means of a slider.
@@ -34,7 +34,7 @@ The plugin allows the user to zoom in and out by means of a slider.
 image::chartscal_last.png[] 
  
 [#b_why_can_chartscale-pi_be_useful]
-==== B. Why can Chartscale-pi be useful
+=== B. Why can Chartscale-pi be useful
 
 Normally you use the (+) and (-) buttons or the scroll-wheel of your
 mouse for zooning in and out. But maybe you prefer tou use a slider. The
@@ -44,9 +44,9 @@ gives you a direct indication of the zoom-status. +
 xref:chartscale.adoc[Back to top of page ↑]
 
 [#installation]
-=== 2. Installation
+== 2. Installation
 [#a_where_to_get_this_plugin]
-==== A. Where to get this plugin
+=== A. Where to get this plugin
 
 The github repository is:
 
@@ -59,7 +59,7 @@ https://github.com/rgleason/chartscale_pi/releases
 Click on the most recent to download.
 
 [#b_how_to_install_this_plugin]
-==== B. How to install this plugin
+=== B. How to install this plugin
 
 Double-click the downloaded file (with “chartscale_pi” in the name and
 “.exe” as extension) and follow the set-up instructions.
@@ -93,7 +93,7 @@ image::chartscale_all_out.png[]
 xref:chartscale.adoc[Back to top of page ↑]
 
 [#standard_actions]
-=== 3. Standard Actions
+== 3. Standard Actions
 
 What are basic (standard) actions you have to do to make ChartScale-pi
 work.
