@@ -1,0 +1,54 @@
+= ChartScale
+
+image::chartscale_.png[]
+
+== Links
+
+* Source: https://github.com/seandepagnier/chartscale_pi
+* Maintenance Source: https://github.com/rgleason/chartscale_pi
+* Downloads: https://opencpn.org/OpenCPN/plugins/chartscale.html
+* Forum: http://www.cruisersforum.com/forums/f134/chartscale-plugin-201340.html
+
+This document is about ChartScale-plugin (Chartscale-pi)
+
+== 1. What and Why
+ 
+The plugin allows the user to zoom in and out by means of a slider.
+
+image::chartscal_last.png[] 
+ 
+Normally use the (+) and (-) buttons or the mouse scroll-wheel for zooming in and out, but maybe you prefer to use a slider. The position of the slider (far left, far right or somewhere in between) gives you a direct indication of the zoom-status. +
+
+== 2. Installation
+
+Install and Enable the plugin: xref:opencpn-plugins:misc:plugin-install.adoc[Instructions] +
+
+image::chartscale_preferences.png[]
+
+Once the plugin is installed and enabled  Click “*OK*” in the Chart Scale Preferences window and then “*OK*” in the Plugins-window. +
+
+Now the Chart Scale slider should appear on your screen.
+
+In this example the slider-button is to the far left. That means “zoom in as far as possible”.
+
+image::chartscale_all_in.png[]
+
+And in this example the slider-button is to the far right. That means “zoom out as far as possible”.
+
+image::chartscale_all_out.png[]
+
+== 3. Standard Actions
+
+What are basic (standard) actions you have to do to make ChartScale-pi work.
+
+Well, that is quite simple. Click on the slider-bar. Click left of the slider-button to zoom in…
+
+image::chartscale_left_of.png[]
+
+And click right of the slider-button to zoom out.
+
+image::chartscale_right_of.png[]
+
+Click “Last” to zoom back to the zoom-factor that was last used.
+
+image::chartscal_last.png[]
