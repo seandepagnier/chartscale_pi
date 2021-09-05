@@ -1,7 +1,7 @@
 site:
   title: Chartscale Manual
   url:  https://nowhere.net
-  start_page: chartscale::index.adoc
+  start_page: chartscale:ROOT:index.adoc
  
 content:
   sources:
