@@ -1,8 +1,5 @@
-src/ChartScaleDialog.cpp
-src/ChartScaleDialog.h
 src/chartscale_pi.cpp
-src/chartscale_pi.h
-src/ChartScaleUI.cpp
-src/ChartScaleUI.h
+src/ChartScaleDialog.cpp
 src/PreferencesDialog.cpp
-src/PreferencesDialog.h
+src/ChartScaleUI.cpp
+src/icons.cpp
