@@ -55,9 +55,9 @@ set(LONG_DESCRIPTION "Provide a slider to adjust chart scale")
 
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "3")
-set(VERSION_PATCH "10")
+set(VERSION_PATCH "11")
 set(VERSION_TWEAK "0")
-set(VERSION_DATE  "09/10/2023")#DD/MM/YYYY format
+set(VERSION_DATE  "12/10/2023")#DD/MM/YYYY format
 set(OCPN_MIN_VERSION "ov58")
 
 set(OCPN_API_VERSION_MAJOR "1")
