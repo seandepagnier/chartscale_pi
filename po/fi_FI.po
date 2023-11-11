@@ -1,29 +1,28 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the chartscale_pi package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: chartscale_pi 0.3.11.0\n"
+"Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-20 09:21+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2023-11-09 21:22\n"
+"Last-Translator: \n"
+"Language-Team: Finnish\n"
+"Language: fi_FI\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Project-ID: 49843\n"
+"X-Crowdin-Language: fi\n"
+"X-Crowdin-File: /plugins/chartscale_pi/po/chartscale_pi.pot\n"
+"X-Crowdin-File-ID: 446\n"
 
 #: src/ChartScaleDialog.cpp:36
 msgid "Chart Scale"
-msgstr ""
+msgstr "Kartan mittakaava"
 
 #: src/ChartScaleDialog.cpp:54
-msgid ""
-"L\n"
+msgid "L\n"
 "a\n"
 "s\n"
 "t"
@@ -31,36 +30,37 @@ msgstr ""
 
 #: src/ChartScaleDialog.cpp:54
 msgid "Last"
-msgstr ""
+msgstr "Viimeinen"
 
 #: src/ChartScaleUI.cpp:39
 msgid "Transparency"
-msgstr ""
+msgstr "Läpinäkyvyys"
 
 #: src/ChartScaleUI.cpp:48
 msgid "Orientation"
-msgstr ""
+msgstr "Suunta"
 
 #: src/ChartScaleUI.cpp:52
 msgid "Horizontal"
-msgstr ""
+msgstr "Vaakasuora"
 
 #: src/ChartScaleUI.cpp:52
 msgid "Vertical"
-msgstr ""
+msgstr "Pystysuora"
 
 #: src/ChartScaleUI.cpp:58
 msgid "Size"
-msgstr ""
+msgstr "Koko"
 
 #: src/ChartScaleUI.cpp:73
 msgid "Show Title Bar"
-msgstr ""
+msgstr "Näytä Otsikkopalkki"
 
 #: src/ChartScaleUI.cpp:76
 msgid "Last Button"
-msgstr ""
+msgstr "Viimeisin Painike"
 
 #: src/ChartScaleUI.cpp:88
 msgid "About Author"
-msgstr ""
+msgstr "Tietoa Tekijästä"
+
