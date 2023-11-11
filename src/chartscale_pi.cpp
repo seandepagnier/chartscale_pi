@@ -57,7 +57,7 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p)
 //-----------------------------------------------------------------------------
 
 chartscale_pi::chartscale_pi(void *ppimgr)
-    :opencpn_plugin_19(ppimgr)
+    :opencpn_plugin_117(ppimgr)
 {
     // Create the PlugIn icons
     initialize_images();
@@ -89,12 +89,12 @@ bool chartscale_pi::DeInit(void)
 
 int chartscale_pi::GetAPIVersionMajor()
 {
-    return MY_API_VERSION_MAJOR;
+    return OCPN_API_VERSION_MAJOR;
 }
 
 int chartscale_pi::GetAPIVersionMinor()
 {
-    return MY_API_VERSION_MINOR;
+    return OCPN_API_VERSION_MINOR;
 }
 
 int chartscale_pi::GetPlugInVersionMajor()
@@ -107,6 +107,18 @@ int chartscale_pi::GetPlugInVersionMinor()
     return PLUGIN_VERSION_MINOR;
 }
 
+int chartscale_pi::GetPlugInVersionPatch()
+{ 
+      return PLUGIN_VERSION_PATCH; 
+}
+
+int chartscale_pi::GetPlugInVersionPost()
+{ 
+      return PLUGIN_VERSION_TWEAK;
+}
+
+
+
 wxBitmap *chartscale_pi::GetPlugInBitmap()
 {
     return _img_chartscale;
@@ -114,17 +126,17 @@ wxBitmap *chartscale_pi::GetPlugInBitmap()
 
 wxString chartscale_pi::GetCommonName()
 {
-    return _("ChartScale");
+	  return _T(PLUGIN_COMMON_NAME);
 }
 
 wxString chartscale_pi::GetShortDescription()
 {
-    return _("ChartScale plugin provides a slider to adjust chart scale\n");
+    return _(PLUGIN_SHORT_DESCRIPTION);
 }
 
 wxString chartscale_pi::GetLongDescription()
 {
-    return _("ChartScale plugin provides a slider to adjust chart scale\n");
+    return _(PLUGIN_LONG_DESCRIPTION);
 }
 
 void chartscale_pi::SetCurrentViewPort(PlugIn_ViewPort &vp)

@@ -31,8 +31,8 @@
 
 #include "version.h"
 
-#define     MY_API_VERSION_MAJOR    1
-#define     MY_API_VERSION_MINOR    9
+//#define     MY_API_VERSION_MAJOR    1
+//#define     MY_API_VERSION_MINOR    9
 
 #define ABOUT_AUTHOR_URL "http://seandepagnier.users.sourceforge.net"
 
@@ -46,7 +46,7 @@
 //----------------------------------------------------------------------------------------------------------
 
 class ChartScaleDialog;
-class chartscale_pi : public wxEvtHandler, public opencpn_plugin_19
+class chartscale_pi : public wxEvtHandler, public opencpn_plugin_117
 {
 public:
     chartscale_pi( void *ppimgr );
@@ -59,6 +59,8 @@ public:
     int GetAPIVersionMinor();
     int GetPlugInVersionMajor();
     int GetPlugInVersionMinor();
+    int GetPlugInVersionPatch();	  
+    int GetPlugInVersionPost();	
     wxBitmap *GetPlugInBitmap();
     wxString GetCommonName();
     wxString GetShortDescription();
