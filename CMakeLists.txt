@@ -19,7 +19,7 @@
 ## *   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                       *
 #-----------------------------------------------------------------------------
 # Frontend2 Author: Jon Gough 
-# Testplugin(TP) v1.0.260 07/10/2023 DD/MM/YYYY format
+# Testplugin(TP) v1.0.286.3 29/12/2023 DD/MM/YYYY format
 # buildCI:yes useODAPI:no validateJSON:no
 # ---------------------------------------------------------------------------
 ## -- When changing this file do NOT change the order of the sections.    -- ##
@@ -37,8 +37,9 @@ if(COMMAND cmake_policy)
         cmake_policy(SET CMP0043 NEW)
     endif(POLICY CMP0043)
     cmake_policy(SET CMP0048 NEW)
-# Need cmake 3.13 to implement this, but raspbian builds are at 3.7.2 and bionic at 3.10 and xenial builds at 3.5.1
-#    cmake_policy(SET CMP0076 NEW)
+    if(POLICY CMP0076)
+        cmake_policy(SET CMP0076 NEW)
+    endif(POLICY CMP0076)
     if(POLICY CMP0077)
         cmake_policy(SET CMP0077 NEW)
     endif(POLICY CMP0077)
@@ -55,9 +56,9 @@ set(LONG_DESCRIPTION "Provide a slider to adjust chart scale")
 
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "3")
-set(VERSION_PATCH "11")
+set(VERSION_PATCH "12")
 set(VERSION_TWEAK "0")
-set(VERSION_DATE  "12/10/2023")#DD/MM/YYYY format
+set(VERSION_DATE  "24/01/2023")#DD/MM/YYYY format
 set(OCPN_MIN_VERSION "ov58")
 
 set(OCPN_API_VERSION_MAJOR "1")
@@ -95,9 +96,6 @@ option(PLUGIN_USE_SVG "Use SVG graphics" ON)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Use local version of GLU library
-# requires libs/glu directory
-set(USE_LOCAL_GLU TRUE)
 # Prefer libGL.so to libOpenGL.so, see CMP0072
 set(OpenGL_GL_PREFERENCE "LEGACY")   #not operational
 
@@ -161,8 +159,6 @@ add_definitions(-DPLUGIN_USE_SVG)
 
 ## ----- If using JSON validation in plugin section above is needed --------##
 
-if(QT_ANDROID)
-endif(QT_ANDROID)
 
 ##=============================================================
 ## Change as required to collect all the set( headers and SRCS
@@ -189,29 +185,13 @@ if(NOT OCPN_FLATPAK_CONFIG)
 	# so following statements will not work
     message(STATUS "${CMLOC}Adding target link libraries to ${PACKAGE_NAME}")
 
-#    add_subdirectory(opencpn-libs/WindowsHeaders)
-#    target_link_libraries(${PACKAGE_NAME} windows::headers)
+    if (WIN32)
+        add_subdirectory(opencpn-libs/WindowsHeaders)
+        target_link_libraries(${PACKAGE_NAME} windows::headers)
+    endif (WIN32)
 
     add_subdirectory(opencpn-libs/api-17)
     target_link_libraries(${PACKAGE_NAME} ocpn::api)
-
-#    add_subdirectory(opencpn-libs/tinyxml)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::tinyxml)
-
-#    add_subdirectory(opencpn-libs/odapi)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::odapi)
-
-#    add_subdirectory(opencpn-libs/jsonlib)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::jsonlib)
-
-#    add_subdirectory(opencpn-libs/wxJSON)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::wxjson)
-
-#    add_subdirectory(opencpn-libs/plugingl)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::plugingl)
-
-#    add_subdirectory(opencpn-libs/nmea0183)
-#    target_link_libraries(${PACKAGE_NAME} ocpn::nmea0183)
 
 endif(NOT OCPN_FLATPAK_CONFIG)
 
@@ -246,3 +226,4 @@ get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTO
 foreach(dir ${dirs})
     message(STATUS "${CMLOC}dir='${dir}'")
 endforeach()
+
